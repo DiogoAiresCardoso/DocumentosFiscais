@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{D8BFCF82-8037-4685-87BE-C5A91C018479}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DocumentosFiscaisApi.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\config\ConfigDocumentosFiscais.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DocumentosFiscaisApi">
+        <MSBuild Projects="DocumentosFiscaisApi.dproj"/>
+    </Target>
+    <Target Name="DocumentosFiscaisApi:Clean">
+        <MSBuild Projects="DocumentosFiscaisApi.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DocumentosFiscaisApi:Make">
+        <MSBuild Projects="DocumentosFiscaisApi.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ConfigDocumentosFiscais">
+        <MSBuild Projects="..\..\config\ConfigDocumentosFiscais.dproj"/>
+    </Target>
+    <Target Name="ConfigDocumentosFiscais:Clean">
+        <MSBuild Projects="..\..\config\ConfigDocumentosFiscais.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ConfigDocumentosFiscais:Make">
+        <MSBuild Projects="..\..\config\ConfigDocumentosFiscais.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DocumentosFiscaisApi;ConfigDocumentosFiscais"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DocumentosFiscaisApi:Clean;ConfigDocumentosFiscais:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DocumentosFiscaisApi:Make;ConfigDocumentosFiscais:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

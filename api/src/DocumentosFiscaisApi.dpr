@@ -6,7 +6,8 @@ uses
   UFormServiceTester in 'utils\UFormServiceTester.pas' {FormServiceTester},
   Service in 'utils\Service.pas' {Service2: TService},
   ACBr in 'shared\infra\acbr\ACBr.pas',
-  ApiHorse in 'shared\infra\horse\ApiHorse.pas';
+  ApiHorse in 'shared\infra\horse\ApiHorse.pas',
+  Logger in 'shared\logger\Logger.pas';
 
 {$R *.RES}
 
