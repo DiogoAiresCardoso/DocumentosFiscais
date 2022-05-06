@@ -193,7 +193,7 @@ end;
 procedure TFormServiceTester.StartService;
 begin
   FThreadServiceTester := TThreadServiceTester.Create(FService);
-  FThreadServiceTester.Resume;
+  FThreadServiceTester.Start;
   LABEStatus.Caption := Format(ST,[FService.DisplayName,#13#10'EM EXECUÇÃO']);
 end;
 
@@ -213,7 +213,7 @@ procedure TThreadServiceTester.ContinueService;
 begin
   TSH(FService).DoContinue;
   if FService.Status = csRunning then
-    FService.ServiceThread.Resume;
+    FService.ServiceThread.Start;
 end;
 
 constructor TThreadServiceTester.Create(aService: TService);
